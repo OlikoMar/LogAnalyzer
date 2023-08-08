@@ -1,0 +1,33 @@
+﻿@model List<LogAnalyzer.Models.LogAnalysisResult>
+
+<h1>Log Analysis</h1>
+
+<form method="post" enctype="multipart/form-data" class="mt-4">
+    <div class="mb-3">
+        <label for="logFile" class="form-label">Select Log File</label>
+        <input type="file" class="form-control" id="logFile" name="logFile">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload and Analyze</button>
+</form>
+
+@if (Model != null)
+{
+    <h2>Analysis Results</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Client IP/HostName</th>
+            <th scope="col">Hits</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var result in Model)
+        {
+            <tr>
+                <td>@result.Hostname (@result.ClientIP)</td>
+                <td>@result.Hits</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
