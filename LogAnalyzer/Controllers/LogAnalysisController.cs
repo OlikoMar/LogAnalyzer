@@ -21,7 +21,7 @@ public class LogAnalysisController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(IFormFile logFile)
     {
-        if (logFile.Length == 0)
+        if (logFile.Length == 0) 
         {
             ModelState.AddModelError("logFile", "Please select a file to upload.");
             return View();
